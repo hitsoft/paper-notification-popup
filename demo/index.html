@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+    <title>paper-notification-popup Demo</title>
+    <script src="../../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="../paper-notification-popup.html">
+    <style is="custom-style">
+      :root {
+        --color-theme-alert-light-success-background: rgba(0, 134, 0, 0.32);
+        --color-theme-alert-light-success-border: green;
+        --color-theme-alert-light-success-text: green;
+
+        --color-theme-alert-light-info-background: rgba(0, 0, 255, 0.35);
+        --color-theme-alert-light-info-border: blue;
+        --color-theme-alert-light-info-text: blue;
+
+        --color-theme-alert-light-warning-background: rgba(255, 255, 0, 0.35);
+        --color-theme-alert-light-warning-border: yellow;
+        --color-theme-alert-light-warning-text: yellow;
+
+        --color-theme-alert-light-error-background: rgba(255, 0, 0, 0.36);
+        --color-theme-alert-light-error-border: red;
+        --color-theme-alert-light-error-text: red;
+
+
+        --color-theme-alert-dark-success-background: green;
+        --color-theme-alert-dark-success-border: #005600;
+        --color-theme-alert-dark-success-text: rgba(255, 255, 255, 0.75);
+
+        --color-theme-alert-dark-info-background: blue;
+        --color-theme-alert-dark-info-border: #000073;
+        --color-theme-alert-dark-info-text: rgba(255, 255, 255, 0.75);
+
+        --color-theme-alert-dark-warning-background: #aa8757;
+        --color-theme-alert-dark-warning-border: #6c5035;
+        --color-theme-alert-dark-warning-text: rgba(255, 255, 255, 0.75);
+
+        --color-theme-alert-dark-error-background: red;
+        --color-theme-alert-dark-error-border: #730000;
+        --color-theme-alert-dark-error-text: rgba(255, 255, 255, 0.75);
+      }
+    </style>
+  </head>
+  <body unresolved>
+
+    <p>An example of <code>&lt;paper-notification-popup&gt;</code>:</p>
+
+    <paper-notification-popup id="lightNotifications"></paper-notification-popup>
+    <paper-notification-popup id="darkNotifications" class="dark"></paper-notification-popup>
+
+    <button id="showLight">Show Light Notifications</button>
+    <button id="showDark">Show Dark Notifications</button>
+
+    <script>
+      showLight.addEventListener('click', showLightNotifications);
+      showDark.addEventListener('click', showDarkNotifications);
+
+      function showLightNotifications() {
+        var light = lightNotifications;
+        light.add({
+          kind: 'SUCCESS',
+          message: 'Here is some SUCCESS message!'
+        });
+        light.add({
+          kind: 'INFO',
+          message: 'Here is some INFO message!'
+        });
+        light.add({
+          kind: 'WARNING',
+          message: 'Here is some WARNING message!'
+        });
+        light.add({
+          kind: 'ERROR',
+          message: 'Here is some ERROR message!'
+        });
+      }
+
+      function showDarkNotifications() {
+        var dark = darkNotifications;
+        dark.add({
+          kind: 'SUCCESS',
+          message: 'Here is some SUCCESS message!'
+        });
+        dark.add({
+          kind: 'INFO',
+          message: 'Here is some INFO message!'
+        });
+        dark.add({
+          kind: 'WARNING',
+          message: 'Here is some WARNING message!'
+        });
+        dark.add({
+          kind: 'ERROR',
+          message: 'Here is some ERROR message!'
+        });
+      }
+    </script>
+
+  </body>
+</html>

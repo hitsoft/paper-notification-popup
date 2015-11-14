@@ -1,0 +1,29 @@
+{
+  "name": "paper-notification-popup",
+  "version": "1.0.0",
+  "authors": [
+    "Konstantin Borisov <smeagol74@gmail.com>"
+  ],
+  "description": "Shows application level notifications in modal pop up window in the center of the screen.",
+  "keywords": [
+    "web-component",
+    "polymer",
+    "hitsoft",
+    "notification"
+  ],
+  "main": "paper-notification-popup.html",
+  "license": "http://polymer.github.io/LICENSE.txt",
+  "homepage": "http://stash.hitsoft-it.com:7990/projects/HP/repos/paper-notification-popup/browse",
+  "ignore": [
+    "/.*",
+    "/test/"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.1.0",
+    "paper-button": "PolymerElements/paper-button#^1.0.0",
+    "paper-material": "PolymerElements/paper-material#^1.0.0"
+  },
+  "devDependencies": {
+    "iron-component-page": "PolymerElements/iron-component-page#^1.0.0"
+  }
+}

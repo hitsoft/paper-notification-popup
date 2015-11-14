@@ -1,0 +1,149 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-material/paper-material.html">
+<link rel="import" href="../paper-button/paper-button.html">
+
+<!--
+An element providing a solution to no problem in particular.
+
+Example:
+
+    <paper-notification-popup></paper-notification-popup>
+
+@group Hitsoft Elements
+@element paper-notification-popup
+@demo demo/index.html
+@hero hero.svg
+-->
+<dom-module id="paper-notification-popup">
+    <template>
+        <style>
+            :host {
+                display: none;
+                z-index: 9999998;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background-color: rgba(0, 0, 0, 0);
+                transition: background-color 0.5s linear;
+            }
+
+            :host(.opened) {
+                background-color: rgba(0, 0, 0, 0.4);
+                display: block;
+            }
+
+            #container {
+                width: 60%;
+                top: 20%;
+                margin: 0 auto;
+                background-color: #fff;
+                padding: 16px;
+            }
+
+            #scroller {
+                max-height: 50vh;
+                overflow-y: auto;
+                margin-bottom: 16px;
+            }
+
+            #scroller paper-material {
+                padding: 16px;
+                border: 1px solid;
+                margin-bottom: 16px;
+            }
+
+            #scroller paper-material:last-child {
+                margin-bottom: 0;
+            }
+
+            .SUCCESS {
+                background-color: var(--color-theme-alert-light-success-background);
+                border-color: var(--color-theme-alert-light-success-border);
+                color: var(--color-theme-alert-light-success-text);
+            }
+
+            .INFO {
+                background-color: var(--color-theme-alert-light-info-background);
+                border-color: var(--color-theme-alert-light-info-border);
+                color: var(--color-theme-alert-light-info-text);
+            }
+
+            .WARNING {
+                background-color: var(--color-theme-alert-light-warning-background);
+                border-color: var(--color-theme-alert-light-warning-border);
+                color: var(--color-theme-alert-light-warning-text);
+            }
+
+            .ERROR {
+                background-color: var(--color-theme-alert-light-error-background);
+                border-color: var(--color-theme-alert-light-error-border);
+                color: var(--color-theme-alert-light-error-text);
+            }
+
+            :host(.dark) .SUCCESS {
+                background-color: var(--color-theme-alert-dark-success-background);
+                border-color: var(--color-theme-alert-dark-success-border);
+                color: var(--color-theme-alert-dark-success-text);
+            }
+
+            :host(.dark) .INFO {
+                background-color: var(--color-theme-alert-dark-info-background);
+                border-color: var(--color-theme-alert-dark-info-border);
+                color: var(--color-theme-alert-dark-info-text);
+            }
+
+            :host(.dark) .WARNING {
+                background-color: var(--color-theme-alert-dark-warning-background);
+                border-color: var(--color-theme-alert-dark-warning-border);
+                color: var(--color-theme-alert-dark-warning-text);
+            }
+
+            :host(.dark) .ERROR {
+                background-color: var(--color-theme-alert-dark-error-background);
+                border-color: var(--color-theme-alert-dark-error-border);
+                color: var(--color-theme-alert-dark-error-text);
+            }
+        </style>
+        <paper-material id="container" elevation="1">
+            <div id="scroller">
+                <template is="dom-repeat" items="[[messages]]">
+                    <paper-material elevation="1" class$="[[item.kind]]">
+                        <span>[[item.message]]</span>
+                    </paper-material>
+                </template>
+            </div>
+            <div>
+                <paper-button raised on-click="reset">Close</paper-button>
+            </div>
+        </paper-material>
+    </template>
+    <script>
+        'use strict';
+
+        Polymer({
+            is: 'paper-notification-popup',
+
+            properties: {
+                messages: {
+                    type: Array,
+                    value: function () {
+                        return [];
+                    }
+                }
+            },
+
+            reset: function () {
+                this.messages = [];
+                this.classList.remove('opened');
+            },
+
+            add: function (msg) {
+                this.push('messages', msg);
+                this.classList.add('opened');
+            }
+
+        });
+    </script>
+</dom-module>
